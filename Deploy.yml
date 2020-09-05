@@ -40,7 +40,7 @@
         chdir: /home/root/ansible
         
     - name: start flask server
-      shell: python server.py
+      shell: python Hello_world.py
       args:
         chdir: "/home/root/ansible"
 
