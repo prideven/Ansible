@@ -37,7 +37,7 @@
     - name: install dependencies
       pip:
         requirements: requirements.txt
-        chdir: /home/root/Ansible
+        chdir: "/home/root/Ansible"
         
     - name: start flask server
       shell: python Hello_World.py
