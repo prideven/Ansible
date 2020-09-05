@@ -1,13 +1,16 @@
+import os
+import socket
 from flask import Flask
 
-app=Flask(__name__)
+app = Flask(__name__)
 
+hostname = socket.gethostname()
+host = socket.gethostbyname(hostname)
 
 @app.route("/")
-def home():
-    return "Hello World from CentOS1"
+def index():
     
+    return "Hello World from"
 
-if __name__=="__main__":
-    app.run(port=8080)
-    
+app.run(host=host, port=8080)
+
