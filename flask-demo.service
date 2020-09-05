@@ -1,0 +1,15 @@
+
+[Unit]
+Description=flask web server demo
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/root/esp-ansible-assignment
+ExecStart=/home/root/esp-ansible-assignment/python server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
