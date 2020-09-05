@@ -24,20 +24,16 @@
 
     - name: clone the git repo
       git:
-        repo: 'https://github.com/prideven/Ansible_CMP272_Hw1'
-        dest: /home/root/Ansible_CMP272_Hw1
+        repo: 'https://github.com/prideven/Ansible'
+        dest: /home/root/Ansible
         update: no
 
         
-    - name: run flask server for CentOs1
-      shell: python CentOS1.py
+    - name: run flask server for CentOs
+      shell: python Hello_World.py
       args:
-        chdir: "/home/root/Ansible_CMP272_Hw1"
+        chdir: "/home/root/Ansible"
         
-    - name: run flask server for CentOs2
-      shell: python CentOS2.py
-      args:
-        chdir: "/home/root/Ansible_CMP272_Hw1"
 
   handlers:
   - name: restart flask app
