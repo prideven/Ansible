@@ -32,7 +32,7 @@
 
     - name: serve flask app systemd unit file
       shell: 
-        cmd: cp -f /home/root/esp-ansible-assignment/flask-demo.service /etc/systemd/system
+        cmd: cp -f /home/root/Ansible/flask-demo.service /etc/systemd/system
 
     - name: install dependencies
       pip:
