@@ -10,7 +10,8 @@ host = socket.gethostbyname(hostname)
 @app.route("/")
 def index():
     
-    return "Hello World from %s" %host
+    ret= "Hello World from host %s" %(host)
+    return ret
 
 app.run(host=host, port=8080)
 
