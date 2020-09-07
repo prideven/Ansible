@@ -15,7 +15,7 @@
 
     - name: Uninstall pip
       yum:
-        name: py-pip
+        name: python-pip
         state: absent
 
     - name: Stop demo service
