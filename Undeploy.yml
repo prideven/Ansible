@@ -1,0 +1,28 @@
+---
+- hosts: all
+  tasks:
+    - name: Disable port 8080
+      firewalld:
+        port: 8080/tcp
+        permanent: no
+        state: disabled
+
+    - name: Uninstall dependencies
+      pip:
+        requirements: requirements.txt
+        chdir: /home/root/Ansible
+        state: absent
+
+    - name: Uninstall pip
+      yum:
+        name: py-pip
+        state: absent
+
+    - name: Stop demo service
+      service:
+        name: demo
+        state: stopped
+
+    - name: Removing github repo
+      shell: /bin/rm -rf /home/root/Ansible
+
