@@ -1,6 +1,6 @@
 
 [Unit]
-Description=flask web server demo
+Description=demo Service
 After=network.target
 
 [Service]
