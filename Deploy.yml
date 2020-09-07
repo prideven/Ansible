@@ -1,20 +1,19 @@
 ---
-
 - hosts: all
   become: yes
   become_user: root
   tasks:
-    - name: Enable the EPEL repository
+    - name: Add epel -release repo
       yum:
         name: epel-release
         
-    - name: Enabling port 8080 on firewalld
+    - name: Enable port 8080
       firewalld:
         port: 8080/tcp
         permanent: yes
         state: enabled
         
-    - name: firewalld service reloading
+    - name: Reload Firewall service
       systemd:
         name: firewalld
         state: reloaded
@@ -24,26 +23,26 @@
         name: python-pip
         state: present
 
-    - name: clone repo
+    - name: Clone git repo
       git:
-        repo: https://github.com/prideven/Ansible
+        repo: 'https://github.com/prideven/Ansible'
         dest: /home/root/Ansible
         update: no 
 
-    - name: serve flask app systemd unit file
+    - name: Enable flask in systemd file
       shell: 
         cmd: cp -f /home/root/Ansible/flask-demo.service /etc/systemd/system
 
-    - name: install dependencies
+    - name: Initialize the Dependencies
       pip:
         requirements: requirements.txt
-        chdir: "/home/root/Ansible"
+        chdir: /home/root/Ansible
         
-    - name: start flask server
+    - name: Run flaskapp on Centos
       shell: python Hello_World.py
       args:
         chdir: "/home/root/Ansible"
 
   handlers:
-  - name: restart flask app
+  - name: Restart Flaskapp
     service: name=flask-demo state=restarted
