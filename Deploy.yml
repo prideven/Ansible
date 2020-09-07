@@ -21,7 +21,7 @@
 
     - name: Install pip
       yum:
-        name: py-pip
+        name: python-pip
         state: present
 
     - name: Clone git repo
