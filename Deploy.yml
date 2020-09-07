@@ -1,4 +1,5 @@
 ---
+# Setting up system packages required to deploy Flask app
 - hosts: all
   become: yes
   become_user: root
@@ -20,7 +21,7 @@
 
     - name: Install pip
       yum:
-        name: python-pip
+        name: py-pip
         state: present
 
     - name: Clone git repo
@@ -31,7 +32,7 @@
 
     - name: Enable flask in systemd file
       shell: 
-        cmd: cp -f /home/root/Ansible/flask-demo.service /etc/systemd/system
+        cmd: cp -f /home/root/Ansible/demo.service /etc/systemd/system
 
     - name: Initialize the Dependencies
       pip:
