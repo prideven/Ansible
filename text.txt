@@ -1,0 +1,66 @@
+https://dcloud2-sjc.cisco.com/content/demo/90426?returnPathTitleKey=content-view
+ 
+After making the anyconnect, go to terminal and establish the connection to Ubuntu server using the below command: 
+  ssh name_sever@Ipaddress
+ 
+ 
+ 
+ 
+To establish connection the ubuntu server:
+ 
+ ssh 'connectionName'@'IP_Address'
+ 
+ 
+After u establish the connection to ubuntu server:
+ 
+1. Install ansible using the below commands:
+ 
+Sudo apt-get update.  ----> updates the repository 
+ sudo apt-get install software-properties-comm.  --->To install the common software properties
+sudo apt-add-repository ppa:ansible/ansible --->includes ansible respoitory.
+ sudo apt-get update-->need to update after installation.
+sudo apt-get install ansible
+ 
+Ansible will be installed.
+ 
+ 
+1. We need to generate the SSH key:
+  ssh-keygen
+ 
+ 
+1. To access the host/inventory file:
+      sudo nano /etc/ansible/hosts
+ 
+(OR cd  etc/ansible/hosts.      Cat hosts --> ucan see the file and add the Ips there)
+ 
+[CentOS]
+198.18.134.49
+198.18.134.50
+ 
+Here enter the name of the host u want to connect in []
+Below each hostname mention the respective IP address. 
+ 
+ 
+1. To check if the host is listed after adding :(When ur in ansible directoryand then use the below command)
+   ansible --list-host all
+ 
+         To access the Particular host u can put the host name in place of host in the command
+ 
+Before u do ping test, u need to import the SSH key generated in the host systems:
+In root directory when u use ls-la u can see .ssh is saved.
+To import this yougo for :
+ ssh-copy-id 'Ip address'
+ 
+ 
+1. To ping test:
+     ansible all -m ping
+ 
+ ____________________________________________________________________________
+ 
+Playbook creation:
+sudo nano Deploy.yml
+ 
+To check if playbook is working fine:
+ 
+Ansible-playbook deploy.yml --check 
+
