@@ -1,0 +1,13 @@
+[Unit]
+Description=Example service to run flask
+
+[Service]
+Type=simple
+WorkingDirectory=/home/root/Ansible
+ExecStart=/home/root/Ansible/python Hello_World.py
+User=root
+StandardOutput=journal+console
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
