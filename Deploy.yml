@@ -1,5 +1,5 @@
 ---
-# Setting up system packages required to deploy Flask app
+
 - hosts: all
   become: yes
   become_user: root
@@ -14,11 +14,6 @@
         permanent: yes
         state: enabled
         
-    - name: Reload Firewall service
-      systemd:
-        name: firewalld
-        state: reloaded
-
     - name: Install pip
       yum:
         name: python-pip
