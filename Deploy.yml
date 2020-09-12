@@ -18,6 +18,15 @@
       yum:
         name: python-pip
         state: present
+        
+    - name: Installing flask
+      become: yes
+      pip:
+        name: 
+          - flask
+      environment: 
+        PATH: /usr/local/bin:{{ ansible_env.PATH }}
+        
 
     - name: Clone git repo
       git:
